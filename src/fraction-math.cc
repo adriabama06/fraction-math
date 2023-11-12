@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-FRACTION_MATH_INTEGER absoluteNumber(FRACTION_MATH_INTEGER n)
+FMI absoluteNumber(FMI n)
 {
     if(n > 0) {
         return n;
@@ -13,12 +13,12 @@ FRACTION_MATH_INTEGER absoluteNumber(FRACTION_MATH_INTEGER n)
 
 // Constructors
 
-FractionMath::Fraction::Fraction(FRACTION_MATH_INTEGER numerator, FRACTION_MATH_INTEGER denominator)
+FractionMath::Fraction::Fraction(FMI numerator, FMI denominator)
 {
     this->numerator = numerator;
     this->denominator = denominator;
 }
-FractionMath::Fraction::Fraction(FRACTION_MATH_INTEGER &numerator, FRACTION_MATH_INTEGER &denominator)
+FractionMath::Fraction::Fraction(FMI &numerator, FMI &denominator)
 {
     this->numerator = numerator;
     this->denominator = denominator;
@@ -34,12 +34,12 @@ FractionMath::Fraction::Fraction()
 /**
  * @returns 0 if can't find a reducer else return the max reducer
 */
-FRACTION_MATH_INTEGER FractionMath::Fraction::findReducer()
+FMI FractionMath::Fraction::findReducer()
 {
-    FRACTION_MATH_INTEGER max_div = 0;
-    FRACTION_MATH_INTEGER den = absoluteNumber(this->denominator);
+    FMI max_div = 0;
+    FMI den = absoluteNumber(this->denominator);
 
-    for (FRACTION_MATH_INTEGER div = 2; div <= den; div++)
+    for (FMI div = 2; div <= den; div++)
     {
         if(this->numerator % div == 0 && this->denominator % div == 0)
         {
@@ -52,7 +52,7 @@ FRACTION_MATH_INTEGER FractionMath::Fraction::findReducer()
 
 void FractionMath::Fraction::reduce()
 {
-    FRACTION_MATH_INTEGER max_div = this->findReducer();
+    FMI max_div = this->findReducer();
 
     if(max_div == 0) return;
 

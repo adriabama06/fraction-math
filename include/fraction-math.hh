@@ -4,18 +4,18 @@
 #include <ostream>
 #include <cstdint>
 
-#define FRACTION_MATH_INTEGER signed long
+#define FMI signed long
 
 namespace FractionMath
 {
     class Fraction
     {
     public:
-        FRACTION_MATH_INTEGER numerator;
-        FRACTION_MATH_INTEGER denominator;
+        FMI numerator;
+        FMI denominator;
 
-        Fraction(FRACTION_MATH_INTEGER numerator, FRACTION_MATH_INTEGER denominator);
-        Fraction(FRACTION_MATH_INTEGER& numerator, FRACTION_MATH_INTEGER& denominator);
+        Fraction(FMI numerator, FMI denominator);
+        Fraction(FMI& numerator, FMI& denominator);
         Fraction();
 
         template<typename T>
@@ -23,7 +23,7 @@ namespace FractionMath
         {
             return static_cast<T>(this->numerator) / static_cast<T>(this->denominator);
         }
-        FRACTION_MATH_INTEGER findReducer();
+        FMI findReducer();
         void reduce();
     };
 } // namespace FractionMath
