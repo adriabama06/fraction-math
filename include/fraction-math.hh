@@ -4,6 +4,7 @@
 #include <ostream>
 #include <cstdint>
 
+// FMI : FRACTION_MATH_INTEGER
 #define FMI signed long
 
 namespace FractionMath
