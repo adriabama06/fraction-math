@@ -60,7 +60,22 @@ void FractionMath::Fraction::reduce()
     this->denominator = this->denominator / max_div;
 }
 
-// Operators
+// Namespace functions
+
+FractionMath::Fraction FractionMath::FindGenerativeFraction(double number)
+{
+    Fraction fract(1, 1);
+
+    for (FMI i = 1; fract.getValue<double>() != number; i *= 10)
+    {
+        fract.numerator = number * i;
+        fract.denominator = i;
+    }
+    
+    return fract;
+}
+
+// Operators Fraction
 
 FractionMath::Fraction operator+(const FractionMath::Fraction &a, const FractionMath::Fraction &b)
 {
@@ -106,4 +121,45 @@ std::ostream& operator<<(std::ostream& os, const FractionMath::Fraction& fractio
 {
     os << fraction.numerator << "/" << fraction.denominator;
     return os;
+}
+
+// Operators Fraction + Number
+
+FractionMath::Fraction operator+(const FractionMath::Fraction& a, const int& b)
+{
+    return a + FractionMath::Fraction(b, 1);
+}
+FractionMath::Fraction operator+(const FractionMath::Fraction& a, const double& b)
+{
+    return a + FractionMath::FindGenerativeFraction(b);
+}
+
+
+FractionMath::Fraction operator-(const FractionMath::Fraction& a, const int& b)
+{
+    return a - FractionMath::Fraction(b, 1);
+}
+FractionMath::Fraction operator-(const FractionMath::Fraction& a, const double& b)
+{
+    return a - FractionMath::FindGenerativeFraction(b);
+}
+
+
+FractionMath::Fraction operator*(const FractionMath::Fraction& a, const int& b)
+{
+    return a * FractionMath::Fraction(b, 1);
+}
+FractionMath::Fraction operator*(const FractionMath::Fraction& a, const double& b)
+{
+    return a * FractionMath::FindGenerativeFraction(b);
+}
+
+
+FractionMath::Fraction operator/(const FractionMath::Fraction& a, const int& b)
+{
+    return a / FractionMath::Fraction(b, 1);
+}
+FractionMath::Fraction operator/(const FractionMath::Fraction& a, const double& b)
+{
+    return a / FractionMath::FindGenerativeFraction(b);
 }

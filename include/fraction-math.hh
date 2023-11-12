@@ -27,12 +27,36 @@ namespace FractionMath
         FMI findReducer();
         void reduce();
     };
+
+
+    // Namespace functions
+
+    Fraction FindGenerativeFraction(double number);
 } // namespace FractionMath
+
+
+// *** Operators Fraction ***
 
 FractionMath::Fraction operator+(const FractionMath::Fraction& a, const FractionMath::Fraction& b);
 FractionMath::Fraction operator-(const FractionMath::Fraction& a, const FractionMath::Fraction& b);
 FractionMath::Fraction operator*(const FractionMath::Fraction& a, const FractionMath::Fraction& b);
 FractionMath::Fraction operator/(const FractionMath::Fraction& a, const FractionMath::Fraction& b);
+
+
+// *** Operators Fraction + Number ***
+
+FractionMath::Fraction operator+(const FractionMath::Fraction& a, const int& b);
+FractionMath::Fraction operator+(const FractionMath::Fraction& a, const double& b);
+
+FractionMath::Fraction operator-(const FractionMath::Fraction& a, const int& b);
+FractionMath::Fraction operator-(const FractionMath::Fraction& a, const double& b);
+
+FractionMath::Fraction operator*(const FractionMath::Fraction& a, const int& b);
+FractionMath::Fraction operator*(const FractionMath::Fraction& a, const double& b);
+
+FractionMath::Fraction operator/(const FractionMath::Fraction& a, const int& b);
+FractionMath::Fraction operator/(const FractionMath::Fraction& a, const double& b);
+
 
 std::ostream& operator<<(std::ostream& os, const FractionMath::Fraction& fraction);
 
